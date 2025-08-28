@@ -30,14 +30,14 @@ Save the .txt file and place it inside the data/ folder
 ## 🚀 Getting Started  
 
 1. Clone the Repository  
-```bash
-git clone https://github.com/omkar-borhade/Whatsapp_Analyzer.git
-cd Whatsapp_Analyzer
+
+    git clone https://github.com/omkar-borhade/Whatsapp_Analyzer.git
+    cd Whatsapp_Analyzer
 
 2. Install Dependencies
-pip install -r requirements.txt
+    pip install -r requirements.txt
 3. Run the App
-streamlit run main.py
+    streamlit run main.py
 
 📂 Project Structure
 ```
@@ -55,8 +55,6 @@ Whatsapp_Analyzer/
 ├── pyproject.toml
 ├── requirements.txt
 └── uv.lock
-
-
 ```
 🛠️ Tech Stack
 
