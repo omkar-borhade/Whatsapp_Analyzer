@@ -54,7 +54,7 @@ def create_wordcloud(selected_user, df):
     def remove_stop_words(message):
         return " ".join([word for word in message.lower().split() if word not in stop_words])
 
-    wc = WordCloud(width=500, height=500, min_font_size=10, background_color='white',font_path="C:/Windows/Fonts/mangal.ttf")
+    wc = WordCloud(width=500, height=500, min_font_size=10, background_color='white',font_path="/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")
     temp.loc[:, 'message'] = temp['message'].apply(remove_stop_words)
 
     df_wc = wc.generate(temp['message'].str.cat(sep=" "))
