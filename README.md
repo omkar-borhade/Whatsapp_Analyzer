@@ -4,7 +4,7 @@ A simple tool to analyze **WhatsApp chat exports** and generate insights like me
 
 ---
 💻 project Link:-
- https://whatsappanalyzer-ayczz6ikwwafxyxjcpdappc.streamlit.app/
+[ https://whatsappanalyzer-ayczz6ikwwafxyxjcpdappc.streamlit.app/](https://whatsappanalyzer-ja6qhnj6ez3zat3bzcic7f.streamlit.app/)
 
 ## ✨ Features
 - 📅 **Timeline Analysis** – messages per day, month, or year  
