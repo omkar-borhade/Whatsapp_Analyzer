@@ -36,8 +36,24 @@ def most_busy_users(df):
     return x, df_percent
 
 
+import os
+from wordcloud import WordCloud
+
+def get_font_path():
+    # Linux (Streamlit Cloud / Ubuntu)
+    if os.path.exists("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"):
+        return "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+    # Windows
+    elif os.path.exists("C:/Windows/Fonts/arial.ttf"):
+        return "C:/Windows/Fonts/arial.ttf"
+    # MacOS
+    elif os.path.exists("/System/Library/Fonts/Supplemental/Arial.ttf"):
+        return "/System/Library/Fonts/Supplemental/Arial.ttf"
+    # Fallback (WordCloud will try default)
+    else:
+        return None
+
 def create_wordcloud(selected_user, df):
-    # load stopwords
     with open('stop_hinglish.txt', 'r', encoding='utf-8') as f:
         stop_words1 = f.read()
     with open('stopwords-mr.txt', 'r', encoding='utf-8') as f:
@@ -45,7 +61,6 @@ def create_wordcloud(selected_user, df):
 
     stop_words = set((stop_words1 + " " + stop_words2).split())
 
-    # filter by user
     if selected_user != 'Overall':
         df = df[df['user'] == selected_user]
 
@@ -54,11 +69,14 @@ def create_wordcloud(selected_user, df):
     def remove_stop_words(message):
         return " ".join([word for word in message.lower().split() if word not in stop_words])
 
-    wc = WordCloud(width=500, height=500, min_font_size=10, background_color='white',font_path="/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")
+    font_path = get_font_path()
+    wc = WordCloud(width=500, height=500, min_font_size=10,
+                   background_color='white', font_path=font_path)
+    
     temp.loc[:, 'message'] = temp['message'].apply(remove_stop_words)
-
     df_wc = wc.generate(temp['message'].str.cat(sep=" "))
     return df_wc
+
 
 
 def most_common_words(selected_user, df):
