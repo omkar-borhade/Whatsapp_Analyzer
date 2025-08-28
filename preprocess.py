@@ -32,7 +32,7 @@ def parse_whatsapp_chat(text):
     users = []
     messages = []
     for message in df['message']:
-        entry = re.split('([\w\W]+?):\s', message)
+        entry = re.split(r'([\w\W]+?):\s', message)
         if entry[1:]:  # user name
             users.append(entry[1])
             messages.append(" ".join(entry[2:]))

@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import re
-import prepocess, helper
+import preprocess, helper
 
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -50,7 +50,7 @@ if not st.session_state.show_analysis:
 if uploaded_file is not None and st.session_state.show_analysis:
     bytes_data = uploaded_file.getvalue()
     data = bytes_data.decode("utf-8")
-    df = prepocess.parse_whatsapp_chat(data)
+    df = preprocess.parse_whatsapp_chat(data)
 
     # fetch unique users
     user_list = df['user'].unique().tolist()
