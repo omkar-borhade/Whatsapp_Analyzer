@@ -79,18 +79,18 @@ def most_common_words(selected_user, df):
     most_common_df = pd.DataFrame(Counter(words).most_common(20), columns=['word','count'])
     return most_common_df
 
-def emoji_helper(selected_user,df):
+def emoji_helper(selected_user, df):
     if selected_user != 'Overall':
         df = df[df['user'] == selected_user]
 
     emojis = []
     for message in df['message']:
-        emojis.extend([c for c in message if c in emoji.UNICODE_EMOJI['en']])
+        # Use new emoji library methods
+        emojis.extend([c for c in message if c in emoji.EMOJI_DATA])  
 
     emoji_df = pd.DataFrame(Counter(emojis).most_common(len(Counter(emojis))))
-
+    emoji_df.columns = ['emoji', 'count']   # add column names for clarity
     return emoji_df
-
 
 
 def monthly_timeline(selected_user,df):
@@ -139,3 +139,4 @@ def activity_heatmap(selected_user,df):
     user_heatmap = df.pivot_table(index='day_name', columns='period', values='message', aggfunc='count').fillna(0)
 
     return user_heatmap
+
