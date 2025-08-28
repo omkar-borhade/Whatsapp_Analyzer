@@ -3,7 +3,7 @@
 A simple tool to analyze **WhatsApp chat exports** and generate insights like message frequency, most active users, word clouds, and more.  
 
 ---
-💻 project Link:- ```https://whatsappanalyzer-ayczz6ikwwafxyxjcpdappc.streamlit.app/```
+💻 project Link:- https://whatsappanalyzer-ayczz6ikwwafxyxjcpdappc.streamlit.app/
 
 ## ✨ Features
 - 📅 **Timeline Analysis** – messages per day, month, or year  
